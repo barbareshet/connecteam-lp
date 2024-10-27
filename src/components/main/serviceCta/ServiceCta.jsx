@@ -1,4 +1,7 @@
 import React from 'react';
+import IconArrowRight from "../../svg/IconArrowRight";
+import IconWheel from "../../svg/IconWheel";
+import Button from "../../misc/Button";
 
 const ServiceCta = ({sectionData, icon: IconComponent, image, color}) => {
     // console.log(sectionData)
@@ -31,9 +34,18 @@ const ServiceCta = ({sectionData, icon: IconComponent, image, color}) => {
                     {
                         items.length > 0 && (
                             items.map((item, index) => (
-                                <a href="#" className="btn btn-cta" key={index}>
-                                    {item?.title}
-                                </a>
+                                <Button key={index} text={item.label} style="btn-cta" url="#"
+                                        iconPosition={`${ index > 0 ? 'after' : 'before'}`}>
+                                            <span>
+                                                {
+                                                    index > 0 ? (
+                                                        <IconArrowRight width={32} height={16} fill="#ffffff"/>
+                                                    ) : (
+                                                        <IconArrowRight width={32} height={16} fill="#ffffff"/>
+                                                    )
+                                                }
+                                            </span>
+                                </Button>
                             ))
                         )
                     }

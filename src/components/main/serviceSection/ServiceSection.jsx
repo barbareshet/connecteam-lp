@@ -5,20 +5,28 @@ const ServiceSection = ({ sectionData, icon: IconComponent, image, color }) => {
         return null; // Don't render the section if data is not provided
     }
 
-    const { title, description } = sectionData;
+    const { title, description, label } = sectionData;
 
     return (
         <section className="service-section">
             <div className="container">
                 <div className="col col-text">
-                    <h2 className="section-title" style={{color: color}}>
-                        {
-                            IconComponent ? (
-                                <IconComponent height={36} width={36} fill={color}/>
-                            ) : null
-                        }
-                        {title}
-                    </h2>
+                    <div className="title-group">
+                        <div className="icon-wrap">
+                            {
+                                IconComponent ? (
+                                    <IconComponent height={36} width={36} fill={color}/>
+                                ) : null
+                            }
+                        </div>
+                        <div className="title-wrap">
+                            <small>{label}</small>
+                            <h2 className="section-title" style={{color: color}}>
+
+                                {title}
+                            </h2>
+                        </div>
+                    </div>
                     <div className="lead" dangerouslySetInnerHTML={{__html: description}}/>
                 </div>
                 <div className="col col-image">

@@ -1,5 +1,8 @@
 import React from 'react';
 import Button from "../../misc/Button";
+import chevronDon from "../../../assets/svg/arrow-scroll.svg"
+import IconArrowRight from "../../svg/IconArrowRight";
+import IconWheel from "../../svg/IconWheel";
 const bgUrl = "https://connecteam.com/static/frontend-home-task/jpg/home-small.jpg";
 const Hero = ({content}) => {
     const {hero} = content
@@ -19,12 +22,30 @@ const Hero = ({content}) => {
                             <div className="links">
                                 {
                                     hero?.links.map((link, i) => (
-                                        <Button key={i} text={link.label} style={link.primary} url={link.href} icon={link.icon} iconPosition={`${link.primary ? 'after' : 'before'}`} />
+                                        <Button key={i} text={link.label} style={link.primary} url={link.href}
+                                                iconPosition={`${link.primary ? 'after' : 'before'}`}>
+                                            <span>
+                                                {
+                                                    link.primary ? (
+                                                        <IconArrowRight width={32} height={16} fill="#ffffff"/>
+                                                    ) : (
+                                                        <IconWheel width={36} height={24} fill="#ED8E00"/>
+                                                    )
+                                                }
+                                            </span>
+                                        </Button>
                                     ))
                                 }
                             </div>
                         )
                     }
+                </div>
+                <div className="scroll-wrap">
+                    <a href="#" className="scroll-down">
+                        <img src={chevronDon} alt=""/>
+                        <img src={chevronDon} alt=""/>
+                        <img src={chevronDon} alt=""/>
+                    </a>
                 </div>
             </div>
         </div>
