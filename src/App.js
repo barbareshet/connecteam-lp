@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useRef, useState} from "react";
 import logo from './logo.svg';
 import './App.css';
 import Navbar from "./components/header/navigation/Navbar";
@@ -21,6 +21,10 @@ function App() {
     const [content, setContent] = useState({});
     const [mainData, setMainData] = useState({});
     const [footerData, setFooterData] = useState({});
+    const [isServiceNavFixed, setServiceNavFixed] = useState(false);
+    const [scrollDirection, setScrollDirection] = useState("down");
+    const lastScrollTop = useRef(0);
+    const serviceNavRef = useRef(null);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -69,6 +73,32 @@ function App() {
         };
 
         fetchData();
+
+        // Handle scroll to toggle fixed positioning
+        const handleScroll = () => {
+            const currentScrollTop = window.scrollY;
+
+            if (serviceNavRef.current) {
+                const offsetTop = serviceNavRef.current.getBoundingClientRect().top + window.scrollY;
+
+                if (currentScrollTop > lastScrollTop.current) {
+                    // Scrolling down
+                    setScrollDirection("down");
+                    if (currentScrollTop >= offsetTop - 80) {
+                        setServiceNavFixed(true);
+                    }
+                } else {
+                    // Scrolling up
+                    setScrollDirection("up");
+                    setServiceNavFixed(false);
+                }
+
+                lastScrollTop.current = currentScrollTop;
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
     // console.log(mainData)
   return (
@@ -78,7 +108,9 @@ function App() {
             <Hero content={content}/>
         </Header>
         <Main>
-            <ServiceNav content={content} />
+            <div ref={serviceNavRef} className={`service-nav-wrapper ${isServiceNavFixed ? 'fixed' : ''}`}>
+                <ServiceNav content={content}/>
+            </div>
 
             {/* Repudiandae Section */}
             {mainData.length > 0 && (
