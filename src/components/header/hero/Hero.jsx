@@ -8,14 +8,19 @@ const Hero = ({content, mainRef}) => {
     const {hero} = content
 
     return (
-        <div className="hero" style={{ backgroundImage: `url(${bgUrl})`, backgroundSize: "cover", backgroundRepeat: "no-repeat", backgroundPosition: "center" }}>
+        <div className="hero" style={{
+            backgroundImage: `url(${bgUrl})`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center"
+        }}>
             <div className="container">
                 <div className="hero-content">
                     <h1 className="page-title">
                         {hero?.title}
                     </h1>
                     <div className="lead">
-                        <p dangerouslySetInnerHTML={{ __html: hero?.subtitle }} />
+                        <p dangerouslySetInnerHTML={{__html: hero?.subtitle}}/>
                     </div>
                     {
                         hero?.links.length > 0 && (
@@ -48,7 +53,7 @@ const Hero = ({content, mainRef}) => {
                        className="scroll-down"
                        onClick={(e) => {
                            e.preventDefault();
-                           mainRef.current?.scrollIntoView({ behavior: 'smooth' });
+                           mainRef.current?.scrollIntoView({behavior: 'smooth'});
                        }}
                     >
                         <img src={chevronDon} alt=""/>
@@ -57,6 +62,7 @@ const Hero = ({content, mainRef}) => {
                     </a>
                 </div>
             </div>
+            <div className="hero-mobile-overlay"></div>
         </div>
     );
 };

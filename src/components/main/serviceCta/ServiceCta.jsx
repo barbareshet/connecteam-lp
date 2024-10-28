@@ -16,7 +16,7 @@ const ServiceCta = ({sectionData, icon: IconComponent, image, color}) => {
             </div>
             <div className="container">
                 <div className="icon-wrap">
-                {
+                    {
                         IconComponent ? (
                             <IconComponent height={72} width={72} fill={color}/>
                         ) : null
@@ -39,7 +39,7 @@ const ServiceCta = ({sectionData, icon: IconComponent, image, color}) => {
                         items.length > 0 && (
                             items.map((item, index) => (
                                 <Button key={index} text={item.title} style="btn-cta" url="#"
-                                        iconPosition={`${ index > 0 ? 'before' : 'after'}`}>
+                                        iconPosition={`${index > 0 ? 'before' : 'after'}`}>
                                             <span>
                                                 {
                                                     index > 0 ? (

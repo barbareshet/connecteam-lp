@@ -10,6 +10,13 @@ const ServiceSection = ({ sectionData, icon: IconComponent, image, color }) => {
     const formattedName = formatNameAsURL(title);
     return (
         <section className="service-section" id={formattedName}>
+            <div className="mobile-icon-wrap">
+                {
+                    IconComponent ? (
+                        <IconComponent height={36} width={36} fill={color}/>
+                    ) : null
+                }
+            </div>
             <div className="container">
                 <div className="col col-text">
                     <div className="title-group">
