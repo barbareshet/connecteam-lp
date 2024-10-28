@@ -19,6 +19,10 @@
     --font-size-12: 12px;
     --transition: all .3s ease-in-out;
 }
+html {
+    scroll-behavior: smooth; /* This will make all anchor links scroll smoothly */
+}
+
 body{
     padding: 0;
     margin: 0;
@@ -41,6 +45,7 @@ h3{
     left: 0;
     padding: 80px 0;
     transition: var(--transition);
+    z-index: 1;
 }
 .site-navigation.scrolled {
     padding: 18px 0;
@@ -243,6 +248,7 @@ h3{
     color: var(--theme-white);
     text-align: center;
     padding: 64px 0;
+    margin-bottom: 80px;
 }
 .cta-section .img-wrap{
     position: absolute;
@@ -287,7 +293,158 @@ h3{
     align-items: center;
     justify-content: center;
     gap: 18px;
+    flex-wrap: wrap;
+}
+.cta-section .divider{
+    margin: 36px auto;
+    border--color: rgba(255,255,255,8%);
+}
+.cta-section .links .btn-primary{
+    background-color: transparent;
+    border:2px solid var(--theme-light-blue);
+    transition: var(--transition);
+}
+.cta-section .links .btn-primary svg{
+    max-width: 32px;
+    height: 16px;
+}
+.cta-section .links .btn-primary:hover{
+    background-color: var(--theme-light-blue);
+    color: var(--theme-white);
 }
 
 /**  footer **/
 
+.site-footer{
+    background-color: #F8F8F8;
+    padding: 64px 0;
+}
+.site-footer .container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 40px;
+}
+.site-footer .container .col-text{
+    padding: 0;
+    flex: 1;
+}
+.site-footer .container .col-form{
+    flex: 2;
+}
+.site-footer .container .col-text .footer-title{
+    color: var(--theme-primary);
+    font-size: 32px;
+}
+.site-footer .container .col-text .footer-link-wrap a{
+    color: var(--theme-primary);
+    text-decoration: none;
+    font-size: var(--font-size-19);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+.site-footer .container .col-form .lead{
+    margin-bottom: 18px;
+}
+.site-footer .container .col-form form{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px 18px;
+    font-family: var(--theme-font-inter);
+}
+.site-footer .container .col-form form .form-group{
+    display: flex;
+    position: relative;
+}
+.site-footer .container .col-form form .form-group .form-label{
+    position: absolute;
+    left: 24px;
+    top: 16px;
+    font-size: 1rem; /* Initial font size */
+    transition: transform 0.2s ease, font-size 0.2s ease, color 0.2s ease; /* Transition for scaling */
+    transform-origin: left; /* Origin for scaling effect */
+}
+.site-footer .container .col-form form .form-group label.form-label-block{
+    position: relative;
+    top: auto;
+    left: auto;
+    margin-bottom: 4px;
+}
+.site-footer .container .col-form form .form-group label.label-select{
+    display: none;
+}
+.site-footer .container .col-form form .form-control{
+    padding: 16px 24px;
+    border-radius: 24px;
+    font-size: 16px;
+    width: 100%;
+    border: 2px solid #EAEAEA;
+    background-color: var(--theme-white);
+    color: var(--theme-secondary);
+}
+.site-footer .container .col-form form .form-control:focus{
+    border-color: var(--theme-primary);
+    outline: 1px solid var(--theme-primary);
+}
+.site-footer .container .col-form form .form-control:focus + .form-label{
+    transform: scale(.75);
+    font-size: 13px;
+    color: var(--theme-primary);
+    top: -8px;
+    background: white;
+}
+.site-footer .container .col-form form .col-md-6{
+    width: calc(50% - 9px);
+}
+.site-footer .container .col-form form .col-md-12{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+
+.site-footer .container .col-form form .form-check-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--theme-white);
+    border-radius: 24px;
+}
+
+/* Flexbox styling for each radio button label */
+.site-footer .container .col-form form .form-check-container .form-check-inline {
+    display: flex;
+    align-items: center;
+    margin-right: 1rem;
+    width: 33%;
+}
+
+/* Styling for the label to make it look like a button */
+.form-check-label {
+    padding: 0.5rem 1rem;
+    border: 2px solid transparent;
+    border-radius: 24px;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+    color: #333;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+}
+
+/* Hide the actual radio input */
+.form-check-input {
+    display: none;
+}
+
+/* Apply yellow color to the label when the input is checked */
+.form-check-input:checked + .form-check-label {
+    border-color: var(--theme-primary);
+    color: var(--theme-primary);
+    font-weight: 600;
+}
+.submit-wrap .btn-primary{
+    border: none;
+    font-family: var(--theme-font-merriweather);
+}

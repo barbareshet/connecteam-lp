@@ -25,6 +25,7 @@ function App() {
     const [scrollDirection, setScrollDirection] = useState("down");
     const lastScrollTop = useRef(0);
     const serviceNavRef = useRef(null);
+    const mainRef = useRef(null);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -100,14 +101,14 @@ function App() {
         window.addEventListener('scroll', handleScroll);
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
-    // console.log(mainData)
+
   return (
     <div className="App">
         <Header>
             <Navbar logo={logo}/>
-            <Hero content={content}/>
+            <Hero content={content} mainRef={mainRef}/>
         </Header>
-        <Main>
+        <Main ref={mainRef}>
             <div ref={serviceNavRef} className={`service-nav-wrapper ${isServiceNavFixed ? 'fixed' : ''}`}>
                 <ServiceNav content={content}/>
             </div>
@@ -154,7 +155,7 @@ function App() {
         </Main>
         <Footer>
             <ColText content={footerData?.intro}/>
-            {/*<ColForm content={footerData?.form}/>*/}
+            <ColForm content={footerData?.form}/>
         </Footer>
     </div>
   );

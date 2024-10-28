@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = ({children}) => {
     return (
-        <footer>
+        <footer className="site-footer">
             <div className="container">
                 {children}
             </div>

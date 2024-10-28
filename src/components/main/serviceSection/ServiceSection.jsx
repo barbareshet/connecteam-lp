@@ -1,4 +1,5 @@
 import React from 'react';
+import {formatNameAsURL} from "../../../utils/formatNameAsURL";
 
 const ServiceSection = ({ sectionData, icon: IconComponent, image, color }) => {
     if (!sectionData) {
@@ -6,9 +7,9 @@ const ServiceSection = ({ sectionData, icon: IconComponent, image, color }) => {
     }
 
     const { title, description, label } = sectionData;
-
+    const formattedName = formatNameAsURL(title);
     return (
-        <section className="service-section">
+        <section className="service-section" id={formattedName}>
             <div className="container">
                 <div className="col col-text">
                     <div className="title-group">
