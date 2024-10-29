@@ -4,9 +4,15 @@ import chevronDon from "../../../assets/svg/arrow-scroll.svg"
 import IconArrowRight from "../../svg/IconArrowRight";
 import IconWheel from "../../svg/IconWheel";
 const bgUrl = "https://connecteam.com/static/frontend-home-task/jpg/home-small.jpg";
-const Hero = ({content, mainRef}) => {
+const Hero = ({content}) => {
     const {hero} = content
-
+    const hero_scroll_down = (event) => {
+        const parentElement = event.currentTarget.parentElement;
+        window.scrollTo({
+            top: parentElement.offsetTop - 50,
+            behavior: "smooth"
+        });
+    };
     return (
         <div className="hero" style={{
             backgroundImage: `url(${bgUrl})`,
@@ -45,15 +51,13 @@ const Hero = ({content, mainRef}) => {
                         )
                     }
                 </div>
-                {
-                    console.log(mainRef.current)
-                }
+
                 <div className="scroll-wrap">
                     <a href="#"
                        className="scroll-down"
                        onClick={(e) => {
                            e.preventDefault();
-                           mainRef.current?.scrollIntoView({behavior: 'smooth'});
+                           hero_scroll_down(e)
                        }}
                     >
                         <img src={chevronDon} alt=""/>
