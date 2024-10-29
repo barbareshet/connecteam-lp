@@ -465,6 +465,9 @@ h3{
     border: none;
     font-family: var(--theme-font-merriweather);
 }
+.submit-wrap .btn-primary:hover{
+    background-color: var(--theme-dark);
+}
 @media screen and (max-width: 1023px){
     .App{
         overflow-x: hidden;

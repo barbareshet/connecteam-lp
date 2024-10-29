@@ -2,10 +2,16 @@ import React from 'react';
 import IconArrowRight from "../../svg/IconArrowRight";
 
 const ColForm = ({ content }) => {
+
+    const handleFormSubmit = (e) => {
+        e.preventDefault();
+        alert('Your form have been submitted');
+    }
+
     return (
         <div className="col col-form">
             <div className="lead" dangerouslySetInnerHTML={{ __html: content?.title }} />
-            <form>
+            <form onSubmit={handleFormSubmit}>
                 {
                     content?.fields.length > 0 && (
                         content.fields.map((field, index) => {
